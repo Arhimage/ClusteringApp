@@ -33,7 +33,7 @@ namespace ClusteringApp
         private void GenerateButtonClicked(object sender, RoutedEventArgs e)
         {
             _gridDrawer?.Dispose();
-            _field = new Field(GetMatrixSize(), 0);
+            _field = new Field(GetMatrixSize());
             _gridDrawer = new GridDrawer(digitGrid, _field);
             _gridDrawer.Update();
             if (_field.ClusterKeeper.Count > 1)

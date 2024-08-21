@@ -19,13 +19,13 @@ namespace ClusteringApp
         /// <param name="matrixSize">Размер генерируемой матрицы</param>
         /// <param name="randSeed">Сид генерируемой матрицы</param>
         /// <exception cref="ArgumentException"></exception>
-        public Field(int matrixSize, int randSeed = 0)
+        public Field(int matrixSize)
         {
             if (matrixSize <= 0)
             {
                 throw new ArgumentException("Размерность матрицы должна быть натуральным числом!");
             }
-            _rand = new Random(randSeed);
+            _rand = new Random();
             Cells = FillCells(matrixSize);
             FillClusters();
         }
