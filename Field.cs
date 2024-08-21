@@ -61,9 +61,10 @@ namespace ClusteringApp
         /// </summary>
         private void FillClusters()
         {
+            int[,] matrix = (int[,])Cells.Clone();
             do
             {
-                FillNextCluster(_aimCells.Last());
+                FillNextCluster(_aimCells.Last(), matrix);
             } while (_aimCells.Count > 0);
         }
 
@@ -71,10 +72,9 @@ namespace ClusteringApp
         /// Группирует точки в кластер, при соблюдении условий кластиризации
         /// </summary>
         /// <param name="clusterCore">Точка начала расчета кластера</param>
-        private void FillNextCluster(Point clusterCore)
+        private void FillNextCluster(Point clusterCore, int[,] matrix)
         {
             ClusterKeeper.Add(new List<Point> { clusterCore });
-            int[,] matrix = (int[,])Cells.Clone();
             int cValue = ClusterKeeper.Count + 1;
             Stack<Point> internalStack = new Stack<Point>();
             matrix[clusterCore.X, clusterCore.Y] = cValue;
